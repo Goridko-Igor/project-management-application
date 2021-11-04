@@ -12,8 +12,8 @@ public class SwaggerConfiguration {
         return new OpenAPI()
                 .info(
                         new Info()
-                                .title("Example Swagger Api")
-                                .version("1.0.0")
+                                .title("Приложение для управления проектами")
+                                .version("1.0-SNAPSHOT")
                 );
     }
 }
