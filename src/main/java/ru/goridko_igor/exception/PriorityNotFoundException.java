@@ -11,12 +11,4 @@ public class PriorityNotFoundException extends RuntimeException {
     public PriorityNotFoundException(String message, Throwable cause) {
         super(message, cause);
     }
-
-    public PriorityNotFoundException(Throwable cause) {
-        super(cause);
-    }
-
-    public PriorityNotFoundException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
-    }
 }
