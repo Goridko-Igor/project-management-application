@@ -25,21 +25,21 @@ public class ProjectParticipantController {
         return ResponseEntity.ok().build();
     }
 
-    @Operation(summary = "Получить список всех участников проектов, участвующих в проекте с projectId")
+    @Operation(summary = "Получить список участников проектов, которые участвуют в конкретном проекте")
     @GetMapping("/project/{projectId}")
     public ResponseEntity<List<ProjectParticipantResponseDto>> getProjectParticipantsByProjectId(
             @PathVariable Long projectId) {
         return ResponseEntity.ok().build();
     }
 
-    @Operation(summary = "Получить список всех участников проектов, в которых участвует пользователь с userId")
+    @Operation(summary = "Получить список участников проектов, в которых участвует конкретный пользователь")
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<ProjectParticipantResponseDto>> getProjectParticipantsByUserId(
             @PathVariable Long userId) {
         return ResponseEntity.ok().build();
     }
 
-    @Operation(summary = "Получить участника проекта по projectId и userId")
+    @Operation(summary = "Получить конкретного участника конкретного проекта")
     @GetMapping("/project/{projectId}/user/{userId}")
     public ResponseEntity<ProjectParticipantResponseDto> getProjectParticipant(
             @PathVariable Long projectId,
@@ -54,7 +54,7 @@ public class ProjectParticipantController {
         return ResponseEntity.ok().build();
     }
 
-    @Operation(summary = "Удалить участника проекта по projectId и userId")
+    @Operation(summary = "Удалить конкретного участника конкретного проекта")
     @DeleteMapping("/project/{projectId}/user/{userId}")
     public ResponseEntity<Void> deleteProjectParticipant(
             @PathVariable Long projectId,
