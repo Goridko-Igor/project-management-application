@@ -7,7 +7,7 @@ public class ReleaseVersionResponseDto {
     private String name;
     private String description;
     private LocalDateTime startTime;
-    private LocalDateTime completionTime;
+    private LocalDateTime endTime;
 
     public ReleaseVersionResponseDto() {
 
@@ -18,12 +18,12 @@ public class ReleaseVersionResponseDto {
             String name,
             String description,
             LocalDateTime startTime,
-            LocalDateTime completionTime) {
+            LocalDateTime endTime) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.startTime = startTime;
-        this.completionTime = completionTime;
+        this.endTime = endTime;
     }
 
     public Long getId() {
@@ -58,11 +58,11 @@ public class ReleaseVersionResponseDto {
         this.startTime = startTime;
     }
 
-    public LocalDateTime getCompletionTime() {
-        return completionTime;
+    public LocalDateTime getEndTime() {
+        return endTime;
     }
 
-    public void setCompletionTime(LocalDateTime completionTime) {
-        this.completionTime = completionTime;
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
     }
 }
