@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -50,6 +51,13 @@ public class ProjectParticipantController {
     @Operation(summary = "Создать нового участника проекта")
     @PostMapping
     public ResponseEntity<Void> createProjectParticipant(
+            @RequestBody ProjectParticipantRequestDto projectParticipantRequestDto) {
+        return ResponseEntity.ok().build();
+    }
+
+    @Operation(summary = "Обновить конкретного участника конкретного проекта")
+    @PutMapping
+    public ResponseEntity<Void> updateProjectParticipant(
             @RequestBody ProjectParticipantRequestDto projectParticipantRequestDto) {
         return ResponseEntity.ok().build();
     }
