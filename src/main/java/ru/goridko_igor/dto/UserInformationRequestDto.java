@@ -1,7 +1,6 @@
 package ru.goridko_igor.dto;
 
 public class UserInformationRequestDto {
-    private Long id;
     private Long userId;
     private String surname;
     private String forename;
@@ -13,26 +12,16 @@ public class UserInformationRequestDto {
     }
 
     public UserInformationRequestDto(
-            Long id,
             Long userId,
             String surname,
             String forename,
             String patronymic,
             String email) {
-        this.id = id;
         this.userId = userId;
         this.surname = surname;
         this.forename = forename;
         this.patronymic = patronymic;
         this.email = email;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Long getUserId() {
