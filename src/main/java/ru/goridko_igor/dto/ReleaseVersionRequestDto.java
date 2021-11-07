@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 public class ReleaseVersionRequestDto {
     private Long id;
+    private Long projectId;
     private String name;
     private String description;
     private LocalDateTime startTime;
@@ -15,11 +16,13 @@ public class ReleaseVersionRequestDto {
 
     public ReleaseVersionRequestDto(
             Long id,
+            Long projectId,
             String name,
             String description,
             LocalDateTime startTime,
             LocalDateTime endTime) {
         this.id = id;
+        this.projectId = projectId;
         this.name = name;
         this.description = description;
         this.startTime = startTime;
@@ -32,6 +35,14 @@ public class ReleaseVersionRequestDto {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(Long projectId) {
+        this.projectId = projectId;
     }
 
     public String getName() {

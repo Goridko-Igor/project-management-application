@@ -26,6 +26,13 @@ public class ReleaseVersionController {
         return ResponseEntity.ok().build();
     }
 
+    @Operation(summary = "Получить список версий релиза конкретного проекта")
+    @GetMapping("/project/{projectId}")
+    public ResponseEntity<List<ReleaseVersionResponseDto>> getReleaseVersionsByProjectId(
+            @PathVariable Long projectId) {
+        return ResponseEntity.ok().build();
+    }
+
     @Operation(summary = "Получить версию релиза по id")
     @GetMapping("/{id}")
     public ResponseEntity<ReleaseVersionResponseDto> getReleaseVersion(@PathVariable Long id) {
