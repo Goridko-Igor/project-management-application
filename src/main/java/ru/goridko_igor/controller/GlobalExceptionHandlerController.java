@@ -1,7 +1,9 @@
 package ru.goridko_igor.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import ru.goridko_igor.dto.ExceptionHandlerMessage;
 import ru.goridko_igor.exception.PriorityNotFoundException;
 import ru.goridko_igor.exception.ProjectNotFoundException;
 import ru.goridko_igor.exception.ProjectParticipantNotFoundException;
@@ -55,7 +57,7 @@ public class GlobalExceptionHandlerController {
     }
 
     @ExceptionHandler(UserNotFoundException.class)
-    public void handleUserNotFoundException(UserNotFoundException e) {
-
+    public ResponseEntity<ExceptionHandlerMessage> handleUserNotFoundException(UserNotFoundException e) {
+        return ResponseEntity.badRequest().body(new ExceptionHandlerMessage(e.getMessage()));
     }
 }

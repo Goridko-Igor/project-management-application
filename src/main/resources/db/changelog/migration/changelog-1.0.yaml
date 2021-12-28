@@ -1,0 +1,505 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 1-0-000001-create-table-user
+      author: Goridko Igor
+      changes:
+        - createTable:
+            schemaName: public
+            tableName: user
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: user_pkey
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(64)
+                  constraints:
+                    nullable: false
+                    unique: true
+                    uniqueConstraintName: user_name_ukey
+              - column:
+                  name: hash_code
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: salt
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+                    uniqueConstraintName: user_salt_ukey
+
+  - changeSet:
+      id: 1-0-000002-create-table-user-information
+      author: Goridko Igor
+      changes:
+        - createTable:
+            schemaName: public
+            tableName: user_information
+            columns:
+              - column:
+                  name: user_id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: user_information_pkey
+                    nullable: false
+                    foreignKeyName: user_information_user_fkey
+                    referencedTableName: user
+                    referencedColumnNames: id
+              - column:
+                  name: surname
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: forename
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: patronymic
+                  type: VARCHAR(255)
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+                    uniqueConstraintName: user_information_email_ukey
+
+  - changeSet:
+      id: 1-0-000003-create-table-role
+      author: Goridko Igor
+      changes:
+        - createTable:
+            schemaName: public
+            tableName: role
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: role_pkey
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(64)
+                  constraints:
+                    nullable: false
+                    unique: true
+                    uniqueConstraintName: role_name_ukey
+              - column:
+                  name: description
+                  type: TEXT
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 1-0-000004-create-table-status
+      author: Goridko Igor
+      changes:
+        - createTable:
+            schemaName: public
+            tableName: status
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: status_pkey
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(64)
+                  constraints:
+                    nullable: false
+                    unique: true
+                    uniqueConstraintName: status_name_ukey
+              - column:
+                  name: description
+                  type: TEXT
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 1-0-000005-create-table-project
+      author: Goridko Igor
+      changes:
+        - createTable:
+            schemaName: public
+            tableName: project
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: project_pkey
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(64)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: TEXT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: creation_time
+                  type: TIMESTAMP WITHOUT TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_paid
+                  type: BOOLEAN
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: status_project_fkey
+                    referencedTableName: status
+                    referencedColumnNames: id
+
+  - changeSet:
+      id: 1-0-000006-create-table-project-participant
+      author: Goridko Igor
+      changes:
+        - createTable:
+            schemaName: public
+            tableName: project_participant
+            columns:
+              - column:
+                  name: project_id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: project_participant_pkey
+                    nullable: false
+                    foreignKeyName: project_project_participant_fkey
+                    referencedTableName: project
+                    referencedColumnNames: id
+              - column:
+                  name: user_id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: project_participant_pkey
+                    nullable: false
+                    foreignKeyName: user_project_participant_fkey
+                    referencedTableName: user
+                    referencedColumnNames: id
+              - column:
+                  name: role_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: role_project_participant_fkey
+                    referencedTableName: role
+                    referencedColumnNames: id
+
+  - changeSet:
+      id: 1-0-000007-create-table-task-type
+      author: Goridko Igor
+      changes:
+        - createTable:
+            schemaName: public
+            tableName: task_type
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: task_type_pkey
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(64)
+                  constraints:
+                    nullable: false
+                    unique: true
+                    uniqueConstraintName: task_type_name_ukey
+              - column:
+                  name: description
+                  type: TEXT
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 1-0-000008-create-table-priority
+      author: Goridko Igor
+      changes:
+        - createTable:
+            schemaName: public
+            tableName: priority
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: priority_pkey
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(64)
+                  constraints:
+                    nullable: false
+                    unique: true
+                    uniqueConstraintName: priority_name_ukey
+              - column:
+                  name: description
+                  type: TEXT
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 1-0-000009-create-table-release-version
+      author: Goridko Igor
+      changes:
+        - createTable:
+            schemaName: public
+            tableName: release_version
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: release_version_pkey
+                    nullable: false
+              - column:
+                  name: project_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: project_release_version_fkey
+                    referencedTableName: project
+                    referencedColumnNames: id
+              - column:
+                  name: name
+                  type: VARCHAR(64)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: TEXT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: start_time
+                  type: TIMESTAMP WITHOUT TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: end_time
+                  type: TIMESTAMP WITHOUT TIME ZONE
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 1-0-000010-create-table-task
+      author: Goridko Igor
+      changes:
+        - createTable:
+            schemaName: public
+            tableName: task
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: task_pkey
+                    nullable: false
+              - column:
+                  name: project_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: project_task_fkey
+                    referencedTableName: project
+                    referencedColumnNames: id
+              - column:
+                  name: author_user_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: author_user_task_fkey
+                    referencedTableName: user
+                    referencedColumnNames: id
+              - column:
+                  name: executor_user_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: executor_user_task_fkey
+                    referencedTableName: user
+                    referencedColumnNames: id
+              - column:
+                  name: name
+                  type: VARCHAR(64)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: TEXT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: status_task_fkey
+                    referencedTableName: status
+                    referencedColumnNames: id
+              - column:
+                  name: task_type_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: task_type_task_fkey
+                    referencedTableName: task_type
+                    referencedColumnNames: id
+              - column:
+                  name: release_version_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: release_version_task_fkey
+                    referencedTableName: release_version
+                    referencedColumnNames: id
+              - column:
+                  name: priority_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: priority_task_fkey
+                    referencedTableName: priority
+                    referencedColumnNames: id
+              - column:
+                  name: start_time
+                  type: TIMESTAMP WITHOUT TIME ZONE
+              - column:
+                  name: completion_time
+                  type: TIMESTAMP WITHOUT TIME ZONE
+
+  - changeSet:
+      id: 1-0-000011-create-sequence-hibernate-sequence
+      author: Goridko Igor
+      changes:
+        - createSequence:
+            schemaName: public
+            sequenceName: hibernate_sequence
+            incrementBy: 1
+            startValue: 1
+            minValue: 1
+            maxValue: 9223372036854775807
+            cacheSize: 1
+
+  - changeSet:
+      id: 1-0-000012-insert-into-table-user
+      author: Goridko Igor
+      changes:
+        - insert:
+            schemaName: public
+            tableName: user
+            columns:
+              - column:
+                  name: name
+                  value: Goridko_Igor
+              - column:
+                  name: hash_code
+                  value: 12345 + Salt of user Goridko_Igor
+              - column:
+                  name: salt
+                  value: Salt of user Goridko_Igor
+
+  - changeSet:
+      id: 1-0-000013-insert-into-table-user
+      author: Goridko Igor
+      changes:
+        - insert:
+            schemaName: public
+            tableName: user
+            columns:
+              - column:
+                  name: name
+                  value: Sharik
+              - column:
+                  name: hash_code
+                  value: Bulgakov + Salt of user Sharik
+              - column:
+                  name: salt
+                  value: Salt of user Sharik
+
+  - changeSet:
+      id: 1-0-000014-insert-into-table-user-information
+      author: Goridko Igor
+      changes:
+        - insert:
+            schemaName: public
+            tableName: user_information
+            columns:
+              - column:
+                  name: user_id
+                  valueNumeric: 1
+              - column:
+                  name: surname
+                  value: Горидько
+              - column:
+                  name: forename
+                  value: Игорь
+              - column:
+                  name: patronymic
+                  value: Вячеславович
+              - column:
+                  name: email
+                  value: Goridko-Igor-1917@yandex.ru
+
+  - changeSet:
+      id: 1-0-000015-insert-into-table-user-information
+      author: Goridko Igor
+      changes:
+        - insert:
+            schemaName: public
+            tableName: user_information
+            columns:
+              - column:
+                  name: user_id
+                  valueNumeric: 2
+              - column:
+                  name: surname
+                  value: Шариков
+              - column:
+                  name: forename
+                  value: Полиграф
+              - column:
+                  name: patronymic
+                  value: Полиграфович
+              - column:
+                  name: email
+                  value: Sharik-1924@telegraph.su

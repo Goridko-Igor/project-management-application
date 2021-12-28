@@ -4,15 +4,15 @@ import java.time.LocalDateTime;
 
 public class TaskResponseDto {
     private Long id;
-    private Long projectId;
-    private Long authorUserId;
-    private Long executorUserId;
+    private ProjectResponseDto project;
+    private UserResponseDto authorUser;
+    private UserResponseDto executorUser;
     private String name;
     private String description;
-    private Long statusId;
-    private Long taskTypeId;
-    private Long releaseVersionId;
-    private Long priorityId;
+    private StatusResponseDto status;
+    private TaskTypeResponseDto taskType;
+    private ReleaseVersionResponseDto releaseVersion;
+    private PriorityResponseDto priority;
     private LocalDateTime startTime;
     private LocalDateTime completionTime;
 
@@ -22,27 +22,27 @@ public class TaskResponseDto {
 
     public TaskResponseDto(
             Long id,
-            Long projectId,
-            Long authorUserId,
-            Long executorUserId,
+            ProjectResponseDto project,
+            UserResponseDto authorUser,
+            UserResponseDto executorUser,
             String name,
             String description,
-            Long statusId,
-            Long taskTypeId,
-            Long releaseVersionId,
-            Long priorityId,
+            StatusResponseDto status,
+            TaskTypeResponseDto taskType,
+            ReleaseVersionResponseDto releaseVersion,
+            PriorityResponseDto priority,
             LocalDateTime startTime,
             LocalDateTime completionTime) {
         this.id = id;
-        this.projectId = projectId;
-        this.authorUserId = authorUserId;
-        this.executorUserId = executorUserId;
+        this.project = project;
+        this.authorUser = authorUser;
+        this.executorUser = executorUser;
         this.name = name;
         this.description = description;
-        this.statusId = statusId;
-        this.taskTypeId = taskTypeId;
-        this.releaseVersionId = releaseVersionId;
-        this.priorityId = priorityId;
+        this.status = status;
+        this.taskType = taskType;
+        this.releaseVersion = releaseVersion;
+        this.priority = priority;
         this.startTime = startTime;
         this.completionTime = completionTime;
     }
@@ -55,28 +55,28 @@ public class TaskResponseDto {
         this.id = id;
     }
 
-    public Long getProjectId() {
-        return projectId;
+    public ProjectResponseDto getProject() {
+        return project;
     }
 
-    public void setProjectId(Long projectId) {
-        this.projectId = projectId;
+    public void setProject(ProjectResponseDto project) {
+        this.project = project;
     }
 
-    public Long getAuthorUserId() {
-        return authorUserId;
+    public UserResponseDto getAuthorUser() {
+        return authorUser;
     }
 
-    public void setAuthorUserId(Long authorUserId) {
-        this.authorUserId = authorUserId;
+    public void setAuthorUser(UserResponseDto authorUser) {
+        this.authorUser = authorUser;
     }
 
-    public Long getExecutorUserId() {
-        return executorUserId;
+    public UserResponseDto getExecutorUser() {
+        return executorUser;
     }
 
-    public void setExecutorUserId(Long executorUserId) {
-        this.executorUserId = executorUserId;
+    public void setExecutorUser(UserResponseDto executorUser) {
+        this.executorUser = executorUser;
     }
 
     public String getName() {
@@ -95,36 +95,36 @@ public class TaskResponseDto {
         this.description = description;
     }
 
-    public Long getStatusId() {
-        return statusId;
+    public StatusResponseDto getStatus() {
+        return status;
     }
 
-    public void setStatusId(Long statusId) {
-        this.statusId = statusId;
+    public void setStatus(StatusResponseDto status) {
+        this.status = status;
     }
 
-    public Long getTaskTypeId() {
-        return taskTypeId;
+    public TaskTypeResponseDto getTaskType() {
+        return taskType;
     }
 
-    public void setTaskTypeId(Long taskTypeId) {
-        this.taskTypeId = taskTypeId;
+    public void setTaskType(TaskTypeResponseDto taskType) {
+        this.taskType = taskType;
     }
 
-    public Long getReleaseVersionId() {
-        return releaseVersionId;
+    public ReleaseVersionResponseDto getReleaseVersion() {
+        return releaseVersion;
     }
 
-    public void setReleaseVersionId(Long releaseVersionId) {
-        this.releaseVersionId = releaseVersionId;
+    public void setReleaseVersion(ReleaseVersionResponseDto releaseVersion) {
+        this.releaseVersion = releaseVersion;
     }
 
-    public Long getPriorityId() {
-        return priorityId;
+    public PriorityResponseDto getPriority() {
+        return priority;
     }
 
-    public void setPriorityId(Long priorityId) {
-        this.priorityId = priorityId;
+    public void setPriority(PriorityResponseDto priority) {
+        this.priority = priority;
     }
 
     public LocalDateTime getStartTime() {

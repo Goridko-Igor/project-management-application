@@ -3,14 +3,19 @@ package ru.goridko_igor.dto;
 public class UserResponseDto {
     private Long id;
     private String name;
+    private UserInformationResponseDto userInformation;
 
     public UserResponseDto() {
 
     }
 
-    public UserResponseDto(Long id, String name) {
+    public UserResponseDto(
+            Long id,
+            String name,
+            UserInformationResponseDto userInformation) {
         this.id = id;
         this.name = name;
+        this.userInformation = userInformation;
     }
 
     public Long getId() {
@@ -27,5 +32,13 @@ public class UserResponseDto {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public UserInformationResponseDto getUserInformation() {
+        return userInformation;
+    }
+
+    public void setUserInformation(UserInformationResponseDto userInformation) {
+        this.userInformation = userInformation;
     }
 }

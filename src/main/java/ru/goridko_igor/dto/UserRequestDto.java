@@ -1,26 +1,18 @@
 package ru.goridko_igor.dto;
 
 public class UserRequestDto {
-    private Long id;
     private String name;
+    private String hashCode;
     private String password;
 
     public UserRequestDto() {
 
     }
 
-    public UserRequestDto(Long id, String name, String password) {
-        this.id = id;
+    public UserRequestDto(String name, String hashCode, String password) {
         this.name = name;
+        this.hashCode = hashCode;
         this.password = password;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -29,6 +21,14 @@ public class UserRequestDto {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getHashCode() {
+        return hashCode;
+    }
+
+    public void setHashCode(String hashCode) {
+        this.hashCode = hashCode;
     }
 
     public String getPassword() {

@@ -3,16 +3,25 @@ package ru.goridko_igor.dto;
 public class ProjectParticipantResponseDto {
     private Long projectId;
     private Long userId;
-    private Long roleId;
+    private ProjectResponseDto project;
+    private UserResponseDto user;
+    private RoleResponseDto role;
 
     public ProjectParticipantResponseDto() {
 
     }
 
-    public ProjectParticipantResponseDto(Long projectId, Long userId, Long roleId) {
+    public ProjectParticipantResponseDto(
+            Long projectId,
+            Long userId,
+            ProjectResponseDto project,
+            UserResponseDto user,
+            RoleResponseDto role) {
         this.projectId = projectId;
         this.userId = userId;
-        this.roleId = roleId;
+        this.project = project;
+        this.user = user;
+        this.role = role;
     }
 
     public Long getProjectId() {
@@ -31,11 +40,27 @@ public class ProjectParticipantResponseDto {
         this.userId = userId;
     }
 
-    public Long getRoleId() {
-        return roleId;
+    public ProjectResponseDto getProject() {
+        return project;
     }
 
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
+    public void setProject(ProjectResponseDto project) {
+        this.project = project;
+    }
+
+    public UserResponseDto getUser() {
+        return user;
+    }
+
+    public void setUser(UserResponseDto user) {
+        this.user = user;
+    }
+
+    public RoleResponseDto getRole() {
+        return role;
+    }
+
+    public void setRole(RoleResponseDto role) {
+        this.role = role;
     }
 }
